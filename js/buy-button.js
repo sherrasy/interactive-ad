@@ -6,7 +6,7 @@ const handleButtonClick = ()=> buyButton.addEventListener('click', ()=>{
 });
 
 export const showButton = ()=> {
-    buyButton.classList.remove('visually-hidden');
+    buyButton.classList.remove('hidden');
     handleButtonClick();
 };
 
