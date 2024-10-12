@@ -9,6 +9,14 @@ function dragStart(event) {
   itemId = event.target.id;
 }
 
+function dragEnter(event) {
+  event.preventDefault();
+}
+
+function dragOver(event) {
+  event.preventDefault();
+}
+
 function touchStart(event) {
   event.preventDefault();
   dragStart(event.changedTouches[0]);
@@ -19,6 +27,8 @@ const removeDraggable = () => {
     item.removeEventListener('dragstart', dragStart);
     item.removeEventListener('touchstart', touchStart);
   });
+  dropZone.removeEventListener('dragenter', dragEnter);
+  dropZone.removeEventListener('dragover', dragOver);
   dropZone.removeEventListener('drop', drop);
 };
 
@@ -28,6 +38,8 @@ export const setDraggableElements = () => {
     item.addEventListener('touchstart', touchStart);
     item.addEventListener('click', touchStart);
   });
+  dropZone.addEventListener('dragenter', dragEnter);
+  dropZone.addEventListener('dragover', dragOver);
   dropZone.addEventListener('drop', drop);
 };
 
