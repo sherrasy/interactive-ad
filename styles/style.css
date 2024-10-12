@@ -1,0 +1,329 @@
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1;
+    -webkit-filter: saturate(100%);
+    filter: saturate(100%);
+  }
+  50% {
+    opacity: 0.75;
+    -webkit-filter: saturate(50%);
+    filter: saturate(50%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-filter: saturate(100%);
+    filter: saturate(100%);
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+    -webkit-filter: saturate(100%);
+    filter: saturate(100%);
+  }
+  50% {
+    opacity: 0.75;
+    -webkit-filter: saturate(50%);
+    filter: saturate(50%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-filter: saturate(100%);
+    filter: saturate(100%);
+  }
+}
+
+@-webkit-keyframes cartScale {
+  0% {
+    scale: 1;
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+  50% {
+    scale: 1.25;
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+  }
+  100% {
+    scale: 1.5;
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+  }
+}
+
+@keyframes cartScale {
+  0% {
+    scale: 1;
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+  50% {
+    scale: 1.25;
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+  }
+  100% {
+    scale: var(--scale-factor);
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+  }
+}
+
+@font-face {
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  font-family: 'YS Text';
+  src: url('/assets/fonts/YS_Text-Medium.woff2') format('woff2'),
+    url('/assets/fonts/YS_Text-Medium.woff') format('woff'),
+    url('/assets/fonts/YS_Text-Medium.ttf') format('tff');
+}
+
+body {
+  min-height: 100%;
+  background-color: #edf6ff;
+}
+
+.storage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.storage::before {
+  content: url('/assets/icon/storage.svg');
+  position: fixed;
+  top: 28px;
+  z-index: -1;
+}
+
+.storage__shelf_top {
+  width: 210px;
+  height: 137px;
+  max-height: 137px;
+}
+
+.storage__shelf_top .shelf {
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  padding-left: 21px;
+  padding-right: 17px;
+  gap: 3px;
+}
+.storage__shelf_top .shelf li:first-child {
+  margin-right: 2px;
+}
+.storage__shelf_top .shelf li:last-child {
+  margin-left: 5px;
+}
+
+.storage__shelf_center {
+  height: 80px;
+  max-height: 80px;
+}
+
+.storage__shelf_center .shelf {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 22px;
+  padding-left: 10px;
+}
+
+.storage__shelf_center .shelf li:first-child {
+  margin-bottom: 12px;
+}
+
+.storage__shelf_center .shelf li:last-child {
+  margin-left: 4px;
+}
+
+.storage__shelf_bottom {
+  height: 90px;
+  max-height: 90px;
+}
+
+.storage__shelf_bottom .shelf {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  padding-top: 5px;
+  padding-left: 20px;
+  max-width: 205px;
+}
+
+.storage__shelf_bottom .shelf li:last-child {
+  position: relative;
+  top: 5px;
+}
+
+.shelf {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  list-style: none;
+  width: 210px;
+  margin: 0;
+  padding: 0;
+}
+
+.shelf__item-wrapper {
+  cursor: move;
+}
+
+.cart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.cart::after {
+  content: url('/assets/icon/cart.svg');
+  position: fixed;
+  bottom: -4px;
+}
+
+.cart__drop-area {
+  position: fixed;
+  bottom: 50px;
+  width: 250px;
+  height: 140px;
+  z-index: 1;
+}
+.cart__content-field {
+  position: fixed;
+  bottom: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  width: 250px;
+  height: 140px;
+  z-index: -1;
+}
+.cart__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  width: 200px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cart__content li img:not(#wine) {
+  --scale-factor: 1.5;
+ -webkit-animation: cartScale 4s linear; 
+  animation: cartScale 4s linear; 
+  scale: 1.5;
+}
+.cart__content li img#wine {
+  --scale-factor: 1.2;
+  -webkit-animation: cartScale 4s linear; 
+  animation: cartScale 4s linear; 
+  scale: 1.2;
+}
+.cart__content li img:first-child {
+  margin-bottom: 12px;
+  margin-left: 14px;
+}
+.cart__content li:nth-child(2) {
+  position: relative;
+  top: 12px;
+  right: 6px;
+  -webkit-transform: rotateZ(340deg);
+  -ms-transform: rotate(340deg);
+  transform: rotateZ(340deg);
+}
+
+.cart__content li:nth-child(2) img#milk {
+margin-bottom: 28px;
+}
+.cart__content li:nth-child(3) {
+  position: relative;
+  bottom: 4px;
+  right: 18px;
+  -webkit-transform: rotateZ(5deg);
+  -ms-transform: rotate(5deg);
+  transform: rotateZ(5deg);
+}
+
+.cart__button {
+  position: fixed;
+  bottom: 20px;
+  width: 174px;
+  padding: 19px 12px 20px 12px;
+  font-family: 'YS Text', Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 17px;
+  border: none;
+  border-radius: 16px;
+  background-color: #fce000;
+  color: #21201f;
+  -webkit-animation: blink 2s infinite;
+  animation: blink 2s infinite;
+  z-index: 1;
+}
+
+.cart__button:hover {
+  cursor: pointer;
+  animation: none;
+}
+
+img#chicken {
+  width: 65px;
+}
+
+img#pineapple {
+  height: 72px;
+}
+
+img#apple {
+  height: 37px;
+}
+
+img#salad {
+  height: 51px;
+}
+
+.visually-hidden {
+  opacity: 0;
+}
+.hidden {
+  display: none;
+}
