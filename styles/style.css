@@ -82,7 +82,7 @@
 
 body {
   min-height: 100%;
-  background-color: #edf6ff;
+  background-color: #f1f8ff;
 }
 
 .storage {
@@ -108,6 +108,7 @@ body {
   position: fixed;
   top: 28px;
   z-index: -1;
+  scale: var(--scale-media-factor);
 }
 
 .storage__shelf_top {
@@ -123,11 +124,13 @@ body {
   padding-left: 21px;
   padding-right: 17px;
   gap: 3px;
+  height: 129px;
 }
-.storage__shelf_top .shelf li:first-child {
+
+.storage__shelf_top .shelf .shelf__item-wrapper:first-child {
   margin-right: 2px;
 }
-.storage__shelf_top .shelf li:last-child {
+.storage__shelf_top .shelf .shelf__item-wrapper:last-child {
   margin-left: 5px;
 }
 
@@ -144,11 +147,11 @@ body {
   padding-left: 10px;
 }
 
-.storage__shelf_center .shelf li:first-child {
+.storage__shelf_center .shelf .shelf__item-wrapper:first-child {
   margin-bottom: 12px;
 }
 
-.storage__shelf_center .shelf li:last-child {
+.storage__shelf_center .shelf .shelf__item-wrapper:last-child {
   margin-left: 4px;
 }
 
@@ -169,7 +172,7 @@ body {
   max-width: 205px;
 }
 
-.storage__shelf_bottom .shelf li:last-child {
+.storage__shelf_bottom .shelf .shelf__item-wrapper:last-child {
   position: relative;
   top: 5px;
 }
@@ -210,6 +213,7 @@ body {
   content: url('/assets/icon/cart.svg');
   position: fixed;
   bottom: -4px;
+  scale: var(--scale-media-factor);
 }
 
 .cart__drop-area {
@@ -245,23 +249,23 @@ body {
   list-style: none;
 }
 
-.cart__content li img:not(#wine) {
+.cart__content .shelf__item-wrapper .shelf__item:not(#wine) {
   --scale-factor: 1.5;
- -webkit-animation: cartScale 4s linear; 
-  animation: cartScale 4s linear; 
-  scale: 1.5;
+  -webkit-animation: cartScale 4s linear;
+  animation: cartScale 4s linear;
+  scale: var(--scale-factor);
 }
-.cart__content li img#wine {
+.cart__content .shelf__item-wrapper .shelf__item#wine {
   --scale-factor: 1.2;
-  -webkit-animation: cartScale 4s linear; 
-  animation: cartScale 4s linear; 
-  scale: 1.2;
+  -webkit-animation: cartScale 4s linear;
+  animation: cartScale 4s linear;
+  scale: var(--scale-factor);
 }
-.cart__content li img:first-child {
+.cart__content .shelf__item-wrapper .shelf__item:first-child {
   margin-bottom: 12px;
   margin-left: 14px;
 }
-.cart__content li:nth-child(2) {
+.cart__content .shelf__item-wrapper:nth-child(2) {
   position: relative;
   top: 12px;
   right: 6px;
@@ -270,10 +274,10 @@ body {
   transform: rotateZ(340deg);
 }
 
-.cart__content li:nth-child(2) img#milk {
-margin-bottom: 28px;
+.cart__content .shelf__item-wrapper:nth-child(2) .shelf__item#milk {
+  margin-bottom: 28px;
 }
-.cart__content li:nth-child(3) {
+.cart__content .shelf__item-wrapper:nth-child(3) {
   position: relative;
   bottom: 4px;
   right: 18px;
@@ -305,19 +309,23 @@ margin-bottom: 28px;
   animation: none;
 }
 
-img#chicken {
+.shelf__item-wrapper .shelf__item {
+  scale: var(--scale-media-factor);
+}
+
+.shelf__item#chicken {
   width: 65px;
 }
 
-img#pineapple {
+.shelf__item#pineapple {
   height: 72px;
 }
 
-img#apple {
+.shelf__item#apple {
   height: 37px;
 }
 
-img#salad {
+.shelf__item#salad {
   height: 51px;
 }
 
@@ -326,4 +334,168 @@ img#salad {
 }
 .hidden {
   display: none;
+}
+
+@media screen and (min-height: 800px) and (min-width: 425px) {
+  .storage {
+    margin-top: 60px;
+  }
+  .storage::before {
+    top: 104px;
+  }
+}
+
+@media screen and (min-height: 1000px) and (min-width: 768px) {
+  .storage {
+    margin-top: 84px;
+  }
+  .storage::before {
+    top: 149px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .storage,
+  .cart::after {
+    --scale-media-factor: 1.3;
+  }
+
+  .cart__content .shelf__item-wrapper .shelf__item:not(#wine) {
+    --scale-factor: 1.8;
+  }
+  .cart__content .shelf__item-wrapper .shelf__item#wine {
+    --scale-factor: 1.5;
+  }
+
+  .storage__shelf_top {
+    width: 275px;
+    height: 172px;
+    max-height: 172px;
+  }
+  .storage__shelf_top .shelf {
+    padding-left: 38px;
+    gap: 16px;
+    height: 159px;
+  }
+  .storage__shelf_top .shelf .shelf__item-wrapper:first-child {
+    margin-bottom: 12px;
+  }
+  .storage__shelf_top .shelf .shelf__item-wrapper:nth-child(2) {
+    margin-bottom: 6px;
+  }
+
+  .storage__shelf_center {
+    height: 114px;
+    max-height: 114px;
+  }
+
+  .storage__shelf_center .shelf {
+    padding-top: 40px;
+    padding-left: 0;
+    gap: 16px;
+  }
+
+  .storage__shelf_bottom {
+    height: 124px;
+    max-height: 124px;
+  }
+
+  .storage__shelf_bottom .shelf {
+    padding-top: 20px;
+    padding-left: 0px;
+    max-width: 275px;
+    gap: 22px;
+  }
+
+  .shelf {
+    width: 230px;
+  }
+
+  .cart__drop-area {
+    bottom: 20px;
+    width: 300px;
+    height: 240px;
+  }
+
+  .cart__content-field {
+    bottom: 40px;
+    height: 240px;
+  }
+
+  .cart__button {
+    width: 214px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 767px) and (min-width: 425px) {
+  .storage,
+  .cart::after {
+    --scale-media-factor: 1.2;
+  }
+
+  .cart__content .shelf__item-wrapper .shelf__item:not(#wine) {
+    --scale-factor: 1.7;
+  }
+  .cart__content .shelf__item-wrapper .shelf__item#wine {
+    --scale-factor: 1.4;
+  }
+  
+  .storage__shelf_top {
+    width: 254px;
+    height: 160px;
+    max-height: 160px;
+  }
+  .storage__shelf_top .shelf {
+    padding-left: 26px;
+    gap: 10px;
+    height: 149px;
+  }
+  .storage__shelf_top .shelf .shelf__item-wrapper:first-child {
+    margin-bottom: 10px;
+  }
+  .storage__shelf_top .shelf .shelf__item-wrapper:nth-child(2) {
+    margin-bottom: 6px;
+  }
+
+  .storage__shelf_center {
+    height: 100px;
+    max-height: 100px;
+  }
+
+  .storage__shelf_center .shelf {
+    padding-top: 34px;
+    gap: 14px;
+  }
+
+  .storage__shelf_bottom {
+    height: 110px;
+    max-height: 110px;
+  }
+
+  .storage__shelf_bottom .shelf {
+    padding-top: 20px;
+    padding-left: 0px;
+    max-width: 245px;
+    gap: 22px;
+  }
+
+  .shelf {
+    width: 220px;
+  }
+
+  .cart__drop-area {
+    bottom: 20px;
+    width: 300px;
+    height: 240px;
+  }
+
+  .cart__content-field {
+    bottom: 40px;
+    height: 240px;
+  }
+
+  .cart__button {
+    width: 194px;
+  }
 }
