@@ -75,9 +75,9 @@
   font-style: normal;
   font-display: swap;
   font-family: 'YS Text';
-  src: url('/assets/fonts/YS_Text-Medium.woff2') format('woff2'),
-    url('/assets/fonts/YS_Text-Medium.woff') format('woff'),
-    url('/assets/fonts/YS_Text-Medium.ttf') format('tff');
+  src: url('../assets/fonts/YS_Text-Medium.woff2') format('woff2'),
+    url('../assets/fonts/YS_Text-Medium.woff') format('woff'),
+    url('../assets/fonts/YS_Text-Medium.ttf') format('tff');
 }
 
 body {
@@ -104,7 +104,7 @@ body {
 }
 
 .storage::before {
-  content: url('/assets/icon/storage.svg');
+  content: url('../assets/icon/storage.svg');
   position: fixed;
   top: 28px;
   z-index: -1;
@@ -210,7 +210,7 @@ body {
   align-items: center;
 }
 .cart::after {
-  content: url('/assets/icon/cart.svg');
+  content: url('../assets/icon/cart.svg');
   position: fixed;
   bottom: -4px;
   scale: var(--scale-media-factor);
